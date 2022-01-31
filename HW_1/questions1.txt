@@ -1,0 +1,14 @@
+# Answer the following questions for MNIST assignment
+
+1. What was the difference in final evaluation for each algorithm on this problem?
+
+We can see the Logistic Regression has higher accurate rate. LR reaches 92.55% accuray. The bernulli NB can only reach to 84.13% accuracy. 
+
+2. If you observed a different in evaluation, why do you believe one algorithm performed better than the other?
+
+By observing the confusion matrix, Naive Bays sometime will make some "sever" mistake. For example, it predicts 176 "4" as "9". 
+The LR doesn't have that much error. 
+
+3. Based on the confusion matrix, which numerals contributed most to the error, and why?
+
+The number "4". and its always be predicted as 9. I think, naturally, the two figures are very similar, it just 4 has straight line, and 9 has curve. I blieve we can use CNN to explore more about this question. 
