@@ -1,0 +1,37 @@
+# Answer the following questions for Zillow assignment
+
+1. Which models did you try, and how did they compare? If you only tried one model, why did you choose this model?
+
+
+Linear Regression (meanregressor) need all numerical features. So that I drop all the categorial features. I choose this model since most of features are numerical. The final MAE yield at: 0.07175025757124547
+
+Random Forest Regressor: The final MAE yield at: 0.07195792700807827
+
+Extra Tree Regressor: The final MAE yield at:0.07167073463226066
+
+Decision Tree Regressor: The final MAE yield at:0.11434878794919456
+
+We can see the Extra Tree regressor get the lowest MAE. To better compare the model, I choose the same max_depth of random forest and extra tree model. (max depth = 5) 
+
+
+2. Choose three numeric fields and examine the distribution of those fields. Based on your observations, what kind of distribution did you find, and what steps would you take, if any, to prepare the data in those fields?
+
+I choose year build, room count, and tax amount. 
+
+For yearbuil, the data is slightly right skewed, and most of the data center at 1960 to 2000. If not drop the NaN value, I will randomly assign the year by using the distirbution. 
+
+For room count, the data is highly skewed left. Most of the house just has 2 to 3 bedrooms. I will just drop the NaN value, since its not normally distributed. 
+
+For taxamount, by adding log to the tax amount, we can see the tax is normally distributed. If not dropping the NaN value, I will randomly assgin the year by using the distribution. 
+
+
+3. What was your final score, and what steps would you attribute to improving your score during data preparation, model selection, or parameter tuning?
+
+Extra Tree Regressor: The final MAE yield at:0.07167073463226066
+In sklearn, extra tree regressor has three atributes: n_estimators=23, max_depth=5, max_features=0.2. 
+I found that smaller max_depth leads to lower MAE rates for ExtraTree and Random Forest model. 
+For data preparation, I remove the columns with more than 50% missing data, and also drop the NaN values. 
+For model selection, I tried two approches. The fist is to encode the logerror and make the question to classification question, and try the Random Forest model. However, the MAE is really high (Over 77). The second approach is drop all the categorical columns, and use regressor to predict logerror. I tyied parameter tunning for Extra Tree Regressor model. I noticed that when I redece the max_depth, the MAE will be lower. The best n_estimators is beteen 21 t0 25, and max_features is between 0.1 - 0.3. The MAE can be varied if i re-train the model. 
+
+For future experiment, I will not remote the NaN value, and try to fill the value throught the data distibution. For the binary values, I will randomly assign 1 or 0 to observe if that can lead lower MAE. 
+
