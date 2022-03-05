@@ -1,0 +1,19 @@
+# Answer the following questions for Amazon assignment
+
+1. What data preparation steps did you apply? Did you experiment with different preparations when developing your topic model?
+
+During the data exploration steps, I noticed some of the the reviews are not str type. So that, I remove the reviews which is not str type, and remove all the stop words. I also remove the short reviews (<3 words). I use two different preparations techniques, the first is lemmatizer, the second the stemmer. I noticed that the stemmer actually return the best result (coherence score) than the lemmatizer. I guess it is because stemmer standardize each words, and help the LDA model learn the topic better. 
+
+2. If you subdivided the data before topic modeling, describe the steps you took and your findings?
+
+I didn't subdivided the data before the topic modeling. However, for the data preparation steps, I downsample the dataset into 500,000. 
+And I also removed the short sentence and int type sentences. 
+
+3. Reflect on your topics based on the most predictive words for those topics: do you see the categories that certain topics represent? Inspect a few reviews in those topics: do the reviews align with your expectations about the meaning of the topic?
+
+I observed several topics. However, most of the model's topic doesn't look good to me, becuase it just show how people feel about the precast, rather the categories of the product. The LDAMulticore sometimes can get the related product categories/function. In the future, I will clean all the adj. to see if it will return the better result.
+
+
+4. If you tried multiple approaches to topic modeling, does coherence inform your evaluation of the different models?
+
+I conduct different analysis. Firstly, under the topic number is 5, the stemmer corpus will return better coherence result than the lemmatized corpus. I use the c_v coherence score to evaluate the model. From my observation, increasing the number of topic helps impove the coherence score. But the score will start to drop if pass the particular threshold. For example, the LDAMulticore model has  0.544409689283705 when the number of topics equal to 20, but drop to 0.5415424667593949 when the number of topic euqal to 25. In adddition, the stemmer has the better performance than the lemmatizer. I guess it is because the stemmer standardize each words. Even though, from my experiment, the LDAModel gets the highest the c_v coherence score, I still believe lDAMulticore is better. Since after I observe some of the reviews from the orginial texts, the LDA multicore can get the products categories/function. Other models can just get the positive/negaitive attitude towards to the products. 
